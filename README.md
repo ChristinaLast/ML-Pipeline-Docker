@@ -98,3 +98,20 @@ RUN pip install numpy
 COPY . /src
 CMD ["python", "/src/PythonExample.py"]
 ```
+
+A terminal is opened, and docker is installed and the image generated:
+
+```
+sudo snap install docker --devmode
+sudo docker build -t cumulprobfunc .
+sudo docker images
+sudo docker run cumulprobfunc
+```
+
+When checking ```sudo docker images```, we see that the image is confirmed to exist:
+
+```
+REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE
+cumulprobfunc                                            latest              2507d85a262d        10 seconds ago      1.08GB
+```
+
