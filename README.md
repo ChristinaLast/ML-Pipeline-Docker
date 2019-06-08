@@ -81,4 +81,10 @@ The objective is to be able to incorporate this script into a Docker image (a Li
 
 ## Docker Components
 
-x
+A folder is created with the following components:
+
+- Python code (PythonExample.py)
+- Dockerfile
+
+Please see the **cumulprobfunc** folder on this repository for the full code.
+
