@@ -190,3 +190,36 @@ In the terminal, log into the ECR instance:
 
 In this example, the US-East region is used, but you should use the region that your repository is hosted in. Moreover, you should also make sure that this is the same region as associated with the one specified when configuring your login details - a mismatch can result in the connection failing.
 
+A login link is generated, and this is then prefixed with **sudo** to login. You should see the prompt **"Login successful"**.
+
+The relevant Docker image is tagged, and the repository directory is set:
+
+```sudo docker tag cumulprobfunc:latest youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
+
+Now, the Docker image is pushed to the repository:
+
+```sudo docker push youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
+
+An output similar to the following appears:
+
+```
+The push refers to repository [youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob]
+d52c630d4640: Pushed 
+e4ea45e94386: Pushing   3.32MB/56.38MB
+89bea8990634: Pushing  2.783MB/93.1MB
+2633623f6cf4: Pushing  6.369MB
+5194c23c2bc2: Pushing  4.608kB
+69bbfe9f27d4: Waiting 
+2492a3be066b: Waiting 
+910d7fd9e23e: Waiting 
+4230ff7f2288: Waiting 
+2c719774c1e1: Waiting 
+ec62f19bb3aa: Waiting 
+f94641f1fe1f: Waiting 
+```
+
+Once all the instances display **Pushed**, then the Docker image should now appear in the repository.
+
+## Conclusion
+
+In this example, we have seen how to generate a Docker image for a Python application, and then push the Docker image to an AWS ECR repository. Hope you found this useful!
