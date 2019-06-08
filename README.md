@@ -6,4 +6,7 @@ Let me ask you if you have ever had this situation before. You are building a mo
 
 Whatever the reason, Docker alleviates this situation by storing the necessary components in an image, which can then be used by a third-party to deploy an application effectively.
 
-In this example, we will see how a simple Python script can be 
+In this example, we will see how a simple Python script can be incorporated into a Docker image, and this image will then be pushed to ECR (Elastic Container Registry) in AWS.
+
+## Python Script
+
