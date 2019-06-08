@@ -179,3 +179,5 @@ So, the application has been created in Docker. However, there are many instance
 Firstly, a repository is created in ECR - I choose to assign the name **cumulprob** to the repository in this instance:
 
 ![create-ecr-repository](create-ecr-repository.png)
+
+To log into the AWS account through the CLI (command line interface), make sure you have configured your [access and secret access keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html). The following guide from AWS provides more information on this.
