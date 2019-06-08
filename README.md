@@ -88,3 +88,13 @@ A folder is created with the following components:
 
 Please see the **cumulprobfunc** folder on the [Github repository](https://github.com/MGCodesandStats/docker-aws) for the full code.
 
+The script **PythonExample.py** contains the full Python code that is being executed, while the **Dockerfile** contains the set of instructions used to build the Docker image.
+
+### Dockerfile
+
+```
+FROM python
+RUN pip install numpy
+COPY . /src
+CMD ["python", "/src/PythonExample.py"]
+```
