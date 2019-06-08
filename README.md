@@ -79,3 +79,6 @@ Consider a simple Python script for calculating a cumulative binomial probabilit
 
 The objective is to be able to incorporate this script into a Docker image (a Linux terminal is used for this example).
 
+## Docker Components
+
+x
