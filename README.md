@@ -171,3 +171,8 @@ Moreover, running the application now generates the results:
  0.99618489 0.9964138  0.99662897 0.99683123 0.99702136 0.99720008
  0.99736807 0.99752599 0.99767443 0.99781396]
  ```
+
+## Pushing to ECR - AWS
+
+So, the application has been created in Docker. However, there are many instance where a Docker image will need to be pushed to a cloud environment. In this instance, here is how the image just created can be pushed to ECR.
+
