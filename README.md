@@ -176,3 +176,6 @@ Moreover, running the application now generates the results:
 
 So, the application has been created in Docker. However, there are many instance where a Docker image will need to be pushed to a cloud environment. In this instance, here is how the image just created can be pushed to ECR.
 
+Firstly, a repository is created in ECR - I choose to assign the name **cumulprob** in this instance:
+
+![create-ecr-repository](create-ecr-repository.png)
