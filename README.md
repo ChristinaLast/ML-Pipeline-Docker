@@ -1,3 +1,9 @@
+[Home](https://mgcodesandstats.github.io/) |
+[Portfolio](https://mgcodesandstats.github.io/portfolio/) |
+[Terms and Conditions](https://mgcodesandstats.github.io/terms/) |
+[E-mail me](mailto:contact@michaeljgrogan.com) |
+[LinkedIn](https://www.linkedin.com/in/michaeljgrogan/)
+
 # Deploying Python application using Docker and AWS
 
 The use of Docker in conjunction with AWS can be highly effective when it comes to building a data pipeline.
