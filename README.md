@@ -202,22 +202,6 @@ Now, the Docker image is pushed to the repository:
 
 An output similar to the following appears:
 
-```
-The push refers to repository [youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob]
-d52c630d4640: Pushed 
-e4ea45e94386: Pushing   3.32MB/56.38MB
-89bea8990634: Pushing  2.783MB/93.1MB
-2633623f6cf4: Pushing  6.369MB
-5194c23c2bc2: Pushing  4.608kB
-69bbfe9f27d4: Waiting 
-2492a3be066b: Waiting 
-910d7fd9e23e: Waiting 
-4230ff7f2288: Waiting 
-2c719774c1e1: Waiting 
-ec62f19bb3aa: Waiting 
-f94641f1fe1f: Waiting 
-```
-
 Once all the instances display **Pushed**, then the Docker image should now appear in the repository.
 
 ## Conclusion
