@@ -112,7 +112,7 @@ When checking ```sudo docker images```, we see that the image is confirmed to ex
 
 ```
 REPOSITORY                                               TAG                 IMAGE ID            CREATED             SIZE
-cumulprobfunc                                            latest              2507d85a262d        10 seconds ago      1.08GB
+cumulprobfunc                                            latest              0123a45b678c        10 seconds ago      1.08GB
 ```
 
 Moreover, running the application now generates the results:
