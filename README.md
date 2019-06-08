@@ -86,5 +86,5 @@ A folder is created with the following components:
 - Python code (PythonExample.py)
 - Dockerfile
 
-Please see the **cumulprobfunc** folder on this repository for the full code.
+Please see the **cumulprobfunc** folder on the [Github repository](https://github.com/MGCodesandStats/docker-aws) for the full code.
 
