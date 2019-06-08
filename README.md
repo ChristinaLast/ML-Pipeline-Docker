@@ -200,8 +200,6 @@ Now, the Docker image is pushed to the repository:
 
 ```sudo docker push youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
 
-An output similar to the following appears:
-
 Once all the instances display **Pushed**, then the Docker image should now appear in the repository.
 
 ## Conclusion
