@@ -181,3 +181,12 @@ Firstly, a repository is created in ECR - I choose to assign the name **cumulpro
 ![create-ecr-repository](create-ecr-repository.png)
 
 To log into the AWS account through the CLI (command line interface), make sure you have configured your [access and secret access keys]. The following [guide from AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html) provides more information on this.
+
+Once that is configured, the Docker image can now be pushed to the ECR.
+
+In the terminal, log into the ECR instance:
+
+```aws ecr get-login --no-include-email --region us-east-1```
+
+In this example, the US-East region is used, but you should use the region that your repository is hosted in. Moreover, you should also make sure that this is the same region as associated with the one specified when configuring your login details - a mismatch can result in the connection failing.
+
