@@ -118,7 +118,7 @@ cumulprobfunc                                            latest              250
 Moreover, running the application now generates the results:
 
 ```
-sudo docker run cumulprobfunc
+>>> sudo docker run cumulprobfunc
 [0.         0.02       0.0396     0.058808   0.07763184 0.0960792
  0.11415762 0.13187447 0.14923698 0.16625224 0.18292719 0.19926865
  0.21528328 0.23097761 0.24635806 0.2614309  0.27620228 0.29067823
