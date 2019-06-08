@@ -10,7 +10,7 @@ In this example, we will see how a simple Python script can be incorporated into
 
 ## Python Script
 
-Consider a simple Python script for calculating a cumulative binomial probability:
+Consider a simple Python script for calculating a cumulative binomial probability across 100 trials:
 
 ```
 >>> import numpy as np
@@ -76,3 +76,6 @@ Consider a simple Python script for calculating a cumulative binomial probabilit
  0.99618489 0.9964138  0.99662897 0.99683123 0.99702136 0.99720008
  0.99736807 0.99752599 0.99767443 0.99781396]
  ```
+
+The objective is to be able to incorporate this script into a Docker image (a Linux terminal is used for this example).
+
