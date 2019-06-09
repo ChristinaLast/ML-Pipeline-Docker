@@ -105,7 +105,7 @@ COPY . /src
 CMD ["python", "/src/PythonExample.py"]
 ```
 
-A terminal is opened, and docker is installed and the image generated:
+A terminal is opened, Docker is installed, and the image is generated:
 
 ```
 sudo snap install docker --devmode
