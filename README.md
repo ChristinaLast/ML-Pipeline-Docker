@@ -216,7 +216,7 @@ Note that a Docker container or image can be removed by inputting the following 
 
 **To remove an image:**
 
-```sudo docker rm imageID```
+```sudo docker rmi imageID```
 
 **containerID** and **imageID** are replaced with the sequence of letters and numbers that represents the container or image.
 
