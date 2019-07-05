@@ -208,6 +208,18 @@ Now, the Docker image is pushed to the repository:
 
 Once all the instances display **Pushed**, then the Docker image should now appear in the repository.
 
+Note that a Docker container or image can be removed by inputting the following into a Linux terminal:
+
+**To remove a container:**
+
+```sudo docker rm containerID```
+
+**To remove an image:**
+
+```sudo docker rmi imageID```
+
+**containerID** and **imageID** are replaced with the sequence of letters and numbers that represents the container or image.
+
 ## Conclusion
 
 In this example, we have seen how to generate a Docker image for a Python application, and then push the Docker image to an AWS ECR repository. Hope you found this useful!
