@@ -1,4 +1,4 @@
-sudo snap install docker --devmode
-sudo docker build -t cumulprob .
-sudo docker images
-sudo docker run cumulprob
+snap install docker --devmode
+docker build -t app .
+docker images
+docker run --name app -p 5000:5000 app
