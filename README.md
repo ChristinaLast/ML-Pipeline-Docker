@@ -19,7 +19,7 @@ A folder is created with the following components:
 - Python code (runApp.py)
 - Dockerfile
 
-Please see the **ML-Pipeline-Docker** folder on the [Github repository]() for the full code.
+Please see the **ML-Pipeline-Docker** folder on the [Github repository](https://github.com/ChristinaLast/ML-Pipeline-Docker) for the full code.
 
 The script **runApp.py** calls the script **dataCleaning.py**, both contain the full Python code that is being executed, while the **Dockerfile** contains the set of instructions used to build the Docker image.
 
