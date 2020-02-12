@@ -75,3 +75,32 @@ def log(df_merge, y):
     df_merge['Log_Revenue_(Native)'] = y_log_norm
     
     return df_merge
+
+def aggregate_df(df_merge):
+    print("Aggregate the data by Property ID and creating a table of yearly averages")
+    aggregated_df = df_merge.groupby('Property_ID')[["Revenue_(Native)", "Occupancy_Rate", "Number_of_Reservations"]].mean().rename(columns={'Revenue_(Native)' : 'Yearly_Revenue',
+                     'Occupancy_Rate' : 'Yearly_Occupancy_Rate',
+                     'Number_of_Reservations': 'Average_Yearly_Reservations'}).reset_index()
+    print("First 5 rows of the dataframe: ",aggregated_df.head())
+    
+    return aggregated_df
+
+def convert_yearly_income_2018_2019(df_merge):
+    #Create Year column from 'Reporting_Month'
+    df_merge['Year'] = df_merge.Reporting_Month.dt.year
+    print('Created "Year" column from "Reporting_Month""')
+    
+    # Groupby Property ID and Year
+    df_grouped =  df_merge.groupby(['Property_ID','Year']).mean().reset_index()
+    #  Filter data by 2018 and 2019 
+    df_filtered = df_grouped.loc[df_grouped['Year'].isin(['2018','2019'])]
+    print('Groupby "Property_ID" and "Year" and filtered data for 2018 and 2019')
+
+    # merging all other columns and dropping Reporting_Month as no longer relevant
+    df_yearly_merge = pd.merge(df_filtered, df_merge).drop('Reporting_Month', axis=1)
+
+    # printing the first 5 rows of the dataframe
+    print("First 5 rows of the dataframe: ",df_yearly_merge.head())
+    
+    return df_yearly_merge
+

@@ -18,10 +18,15 @@ A folder is created with the following components:
 
 - Python code (runApp.py)
 - Dockerfile
+- .sh file (terminal.sh)
 
 Please see the **ML-Pipeline-Docker** folder on the [Github repository](https://github.com/ChristinaLast/ML-Pipeline-Docker) for the full code.
 
 The script **runApp.py** calls the script **dataCleaning.py**, both contain the full Python code that is being executed, while the **Dockerfile** contains the set of instructions used to build the Docker image.
+
+To run the `.sh` file, execute the following command (using your own /path/to/file)
+
+```sh docker-aws/terminal.sh```
 
 ### Dockerfile
 
@@ -45,7 +50,7 @@ app                                  latest              afe3965d6b7b        20 
 
 So, the application has been created in Docker. However, there are many instance where a Docker image will need to be pushed to a cloud environment. In this instance, here is how the image just created can be pushed to ECR.
 
-Firstly, a repository is created in ECR - I choose to assign the name **cumulprob** to the repository in this instance:
+Firstly, a repository is created in ECR - I choose to assign the name **docker-aws** to the repository in this instance:
 
 ![create-ecr-repository](create-ecr-repository.png)
 
@@ -63,11 +68,11 @@ A login link is generated, and this is then prefixed with **sudo** to login. You
 
 The relevant Docker image is tagged, and the repository directory is set:
 
-```sudo docker tag cumulprobfunc:latest youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
+```docker tag docker-aws:latest youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
 
 Now, the Docker image is pushed to the repository:
 
-```sudo docker push youraddress.dkr.ecr.us-east-1.amazonaws.com/cumulprob:latest```
+```docker push youraddress.dkr.ecr.us-east-1.amazonaws.com/docker-aws:latest```
 
 Once all the instances display **Pushed**, then the Docker image should now appear in the repository.
 
@@ -75,11 +80,11 @@ Note that a Docker container or image can be removed by inputting the following 
 
 **To remove a container:**
 
-```sudo docker rm containerID```
+```docker rm containerID```
 
 **To remove an image:**
 
-```sudo docker rmi imageID```
+```docker rmi imageID```
 
 **containerID** and **imageID** are replaced with the sequence of letters and numbers that represents the container or image.
 
