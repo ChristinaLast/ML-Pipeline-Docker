@@ -18,6 +18,8 @@ EXPOSE 5000
 
 COPY runApp.py ./usr/runApp.py
 COPY dataCleaning.py ./usr/dataCleaning.py
+COPY config.py ./usr/config.py
+
 RUN chmod +x ./usr/runApp.py
 CMD python ./usr/runApp.py
 

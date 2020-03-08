@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 import geopandas as gpd
+import config
 
 #Loading data to dataframe, converting variables to strings and removing whitespace from columns
 def load_data(path_to_csv):
@@ -103,4 +104,14 @@ def convert_yearly_income_2018_2019(df_merge):
     print("First 5 rows of the dataframe: ",df_yearly_merge.head())
     
     return df_yearly_merge
+
+def one_hot_encoder(df_merge):
+    '''
+    This function gets category columns specified in the config file and 
+    creates new columns with the following format: `<column__value>`.
+    ''' 
+    df_ohe = pd.get_dummies(df_merge, prefix_sep="__", columns = config.cat_config())
+    
+    return df_ohe
+
 
