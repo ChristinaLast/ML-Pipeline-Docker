@@ -1,4 +1,5 @@
-from dataCleaning import load_data, clean_data, removing_outliers, normalize, log, aggregate_df, convert_yearly_income_2018_2019, one_hot_encoder
+from dataCleaning import load_data, clean_data, removing_outliers, normalize, log, aggregate_df, convert_yearly_income_2018_2019, one_hot_encoder, create_y, create_boxplot, classify_y, create_gdf, create_classification_col
+import mapclassify as mc 
 
 # loading in data
 Airbnb_Manchester = load_data('./app/data/Airbnb_Manchester.csv')
@@ -32,3 +33,21 @@ Oxford_df_yearly_merge = convert_yearly_income_2018_2019(Oxford_no_outlier)
 Manchester_ohe = one_hot_encoder(Manchester_log_norm)
 Oxford_ohe = one_hot_encoder(Oxford_log_norm)
 
+# creating gdf to store location information
+Manchester_gdf = create_gdf(Manchester_ohe)
+Oxford_gdf = create_gdf(Oxford_ohe)
+
+# creating y variable for the classification
+Manchester_y = create_y(Manchester_ohe)
+Oxford_y = create_y(Oxford_ohe)
+
+#creating boxplot based on 
+Manchester_bp = create_boxplot(Manchester_y)
+Oxford_bp = create_boxplot(Oxford_y)
+
+#classifying y using different techniques
+Manchester_fits = classify_y(Manchester_y)
+Oxford_fits = classify_y(Oxford_y)
+
+#creating gdf to store the 
+Manchester_classified = create_classification_col(Manchester_gdf, Manchester_bp)

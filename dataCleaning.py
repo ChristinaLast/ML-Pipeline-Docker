@@ -3,6 +3,7 @@ import numpy as np
 from scipy import stats
 import geopandas as gpd
 import config
+import mapclassify as mc
 
 #Loading data to dataframe, converting variables to strings and removing whitespace from columns
 def load_data(path_to_csv):
@@ -114,4 +115,41 @@ def one_hot_encoder(df_merge):
     
     return df_ohe
 
+def create_y(df_ohe):
+    # retrieving column containing y variable from the config file. 
+    y = df_ohe[config.y_config()]
+    
+    return y
+
+def classify_y(y):
+    # generating classification objects from the data
+    q5 = mc.Quantiles(y, k=5)
+    ei5 = mc.EqualInterval(y, k=5)
+    mb5 = mc.MaximumBreaks(y, k=5)
+    fits = [c.adcm for c in [q5, ei5, mb5]]
+    print('Fits: ', fits)
+    return fits
+
+def create_gdf(df_ohe):
+    col_geometry = gpd.GeoDataFrame(df_ohe, geometry=gpd.points_from_xy(df_ohe.Longitude, df_ohe.Latitude))
+    gdf = gpd.GeoDataFrame(col_geometry, crs=config.crs_config(), geometry='geometry')
+    return gdf
+
+def create_boxplot(y):
+    bp = mc.BoxPlot(y)
+    # printing output of boxplot
+    print(bp)
+    return bp
+
+def create_classification_col(gdf, bp):
+    # generating labels for boxplot classification of y variable
+    labels = ['0-low outlier', '1-low whisker',
+          '2-Q2', '3-Q3', '4-high whisker', '5-high outlier']
+    bpl = [ labels[b] for b in bp.yb ]
+    bp_array = np.asarray(bpl)
+    gdf["Box_Plot_Labels"] = bp_array
+    # printing the first five rows of the geodataframe
+    print("First 5 rows of the geodataframe: ",gdf.head())
+    
+    return gdf
 
