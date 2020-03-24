@@ -24,9 +24,9 @@ Please see the **ML-Pipeline-Docker** folder on the [Github repository](https://
 
 The script **runApp.py** calls the script **dataCleaning.py**, both contain the full Python code that is being executed, while the **Dockerfile** contains the set of instructions used to build the Docker image.
 
-To run the `.sh` file, execute the following command (using your own /path/to/file)
+To run the `.sh` file, execute the following command:
 
-```sh docker-aws/terminal.sh```
+```sh terminal.sh```
 
 ### Dockerfile
 
