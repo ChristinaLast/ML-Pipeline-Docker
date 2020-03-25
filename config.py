@@ -25,3 +25,9 @@ def crs_config():
     '''Configuration settings for coordinate reference system'''
     crs={'init': 'epsg:4326'}
     return crs
+
+def model_config(model_1):
+    MODEL_1_COL_NAME = ['Bedrooms','Occupancy_Rate','Number_of_Reservations','Log_Revenue_(Native)']
+    
+    if model_1==True:
+        return MODEL_1_COL_NAME
