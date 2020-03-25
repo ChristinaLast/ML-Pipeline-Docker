@@ -1,5 +1,7 @@
-from dataCleaning import load_data, clean_data, removing_outliers, normalize, log, aggregate_df, convert_yearly_income_2018_2019, one_hot_encoder, create_y, create_boxplot, classify_y, create_gdf, create_classification_col
+from dataCleaning import load_data, clean_data, removing_outliers, normalize, log, aggregate_df, convert_yearly_income_2018_2019, one_hot_encoder, create_y, create_boxplot, classify_y, create_gdf, create_classification_col, create_xy_dataframe
+from dataModelling import train_test_split, x_data_description, y_data_description
 import mapclassify as mc 
+import config
 
 # loading in data
 Airbnb_Manchester = load_data('./app/data/Airbnb_Manchester.csv')
@@ -49,5 +51,30 @@ Oxford_bp = create_boxplot(Oxford_y)
 Manchester_fits = classify_y(Manchester_y)
 Oxford_fits = classify_y(Oxford_y)
 
-#creating gdf to store the 
+#creating gdf to store the classification information
 Manchester_classified = create_classification_col(Manchester_gdf, Manchester_bp)
+Oxford_classified = create_classification_col(Oxford_gdf, Oxford_bp)
+
+#Creating a dataframe with only the x and y for model 1 to Predict Airbnb Revenue
+Manchester_Data_xy = create_xy_dataframe(Manchester_ohe) 
+Oxford_Data_xy = create_xy_dataframe(Oxford_ohe)
+
+#Creating a dataframe with only the x variable model 1 to Predict Airbnb Revenue
+Manchester_Data_x = Manchester_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False)]]
+Oxford_Data_x = Oxford_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False)]]
+
+#Creating a dataframe with only the y variable for model 1 to Predict Airbnb Revenue
+Manchester_Data_y = Manchester_ohe.iloc[:, [config.y_config(y_col_null_num=True, y_col_null_name=False)]]
+Oxford_Data_y = Oxford_ohe.iloc[:, [config.y_config(y_col_null_num=True, y_col_null_name=False)]]
+
+#creating test and train dataset from the new xy dataframe
+Manchester_train_df_null, Manchester_test_df_null = train_test_split(Manchester_Data_xy)
+Oxford_train_df_null, Oxford_test_df_null = train_test_split(Oxford_Data_xy)
+
+#describing the x and y variables of the model
+Manchester_train_df_x_stats = x_data_description(Manchester_train_df_null)
+Oxford_train_df_x_stats = x_data_description(Oxford_train_df_null)
+
+Manchester_train_df_y_stats = y_data_description(Manchester_train_df_null)
+Oxford_train_df_y_stats = y_data_description(Oxford_train_df_null)
+

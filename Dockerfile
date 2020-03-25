@@ -9,6 +9,7 @@ RUN pip install scipy
 RUN pip install pandas
 RUN pip install geopandas
 RUN pip install mapclassify
+#RUN pip install tensorflow
 
 COPY app app
 
@@ -20,6 +21,7 @@ EXPOSE 5000
 COPY runApp.py ./usr/runApp.py
 COPY dataCleaning.py ./usr/dataCleaning.py
 COPY config.py ./usr/config.py
+COPY dataModelling.py ./usr/dataModelling.py
 RUN chmod +x ./usr/runApp.py
 CMD python ./usr/runApp.py
 

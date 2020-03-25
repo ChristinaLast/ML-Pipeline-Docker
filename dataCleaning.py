@@ -117,7 +117,7 @@ def one_hot_encoder(df_merge):
 
 def create_y(df_ohe):
     # retrieving column containing y variable from the config file. 
-    y = df_ohe[config.y_config()]
+    y = df_ohe[config.y_config(y_col_null_name=True, y_col_null_num=False)]
     
     return y
 
@@ -153,3 +153,8 @@ def create_classification_col(gdf, bp):
     
     return gdf
 
+def create_xy_dataframe(df_ohe):
+    #selecting the columns based on the config file
+    df_xy = df_ohe.iloc[:, [config.y_config(y_col_null_num=True, y_col_null_name=False),config.x_config(x_col_null_num=True, x_col_null_name=False)]]
+    
+    return df_xy
