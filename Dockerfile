@@ -9,8 +9,7 @@ RUN pip install scipy
 RUN pip install pandas
 RUN pip install geopandas
 RUN pip install mapclassify
-#RUN pip install tensorflow
-
+RUN pip install --upgrade tensorflow
 COPY app app
 
 ADD ./app/data/Airbnb_Manchester.csv ./app/data/Airbnb_Manchester.csv 
