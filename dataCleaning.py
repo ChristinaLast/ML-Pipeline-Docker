@@ -153,12 +153,19 @@ def create_classification_col(gdf, bp):
     
     return gdf
 
-def create_xy_dataframe(df_ohe, model_null, model_1, x_col_null_name, x_col_null_num, x_col_1_name, x_col_1_num, y_col_name, y_col_num):
+def create_xy_dataframe(df_ohe, model_null, model_1, x_col_null_name, x_col_null_num, x_col_1_name, x_col_2_name, x_col_1_num, y_col_name, y_col_num):
     #selecting the columns based on the config file
     if config.model_config(model_null==True, model_1==False):
-        df_xy_null = df_ohe[[config.y_config(y_col_name=True, y_col_num=False),config.x_config(x_col_null_name=True, x_col_null_num=False, x_col_1_num=False, x_col_1_name=False)]]
+        df_xy_null = df_ohe[
+            [config.y_config(y_col_name=True, y_col_num=False),
+            config.x_config(x_col_null_name=True, x_col_null_num=False, x_col_1_num=False, x_col_1_name=False, x_col_2_name=False)]
+            ]
         return df_xy_null
     
     if config.model_config(model_1==True, model_null==False):
-        df_xy_1 = df_ohe[[config.y_config(y_col_name=True, y_col_num=False),config.x_config(x_col_null_name=False, x_col_null_num=False, x_col_1_name=True, x_col_1_num=False)]]
+        df_xy_1 = df_ohe[
+            [config.y_config(y_col_name=True, y_col_num=False),
+            config.x_config(x_col_null_name=False, x_col_null_num=False, x_col_1_name=True, x_col_2_name=False, x_col_1_num=False),
+            config.x_config(x_col_null_name=False, x_col_null_num=False, x_col_1_name=False, x_col_2_name=True, x_col_1_num=False)]
+            ]
         return df_xy_1

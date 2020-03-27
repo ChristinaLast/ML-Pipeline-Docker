@@ -56,18 +56,27 @@ Manchester_classified = create_classification_col(Manchester_gdf, Manchester_bp)
 Oxford_classified = create_classification_col(Oxford_gdf, Oxford_bp)
 
 #Creating a dataframe with only the x variable model 1 to Predict Airbnb Revenue
-Manchester_Data_x = Manchester_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False, x_col_1_num=False, x_col_1_name=False)]]
-Oxford_Data_x = Oxford_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False, x_col_1_num=False, x_col_1_name=False)]]
+Manchester_Data_x = Manchester_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False, x_col_1_num=False, x_col_1_name=False, x_col_2_name=False)]]
+Oxford_Data_x = Oxford_ohe.iloc[:, [config.x_config(x_col_null_num=True, x_col_null_name=False, x_col_1_num=False, x_col_1_name=False, x_col_2_name=False)]]
 
 #Creating a dataframe with only the y variable for model 1 to Predict Airbnb Revenue
 Manchester_Data_y = Manchester_ohe.iloc[:, [config.y_config(y_col_num=True, y_col_name=False)]]
 Oxford_Data_y = Oxford_ohe.iloc[:, [config.y_config(y_col_num=True, y_col_name=False)]]
+
+#Creating a dataframe with only the x and y for null model to Predict Airbnb Revenue
+Manchester_Data_xy_null = create_xy_dataframe(Manchester_ohe, model_null=True, model_1=False, x_col_null_name=True, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=False, x_col_1_num=False, x_col_2_name=False)
+Oxford_Data_xy_null = create_xy_dataframe(Oxford_ohe, model_null=True, model_1=False, x_col_null_name=True, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=False, x_col_1_num=False, x_col_2_name=False)
+
 #Creating a dataframe with only the x and y for model 1 to Predict Airbnb Revenue
-Manchester_Data_xy_null = create_xy_dataframe(Manchester_ohe, model_null=True, model_1=False, x_col_null_name=True, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=False, x_col_1_num=False)
-Oxford_Data_xy_null = create_xy_dataframe(Oxford_ohe, model_null=True, model_1=False, x_col_null_name=True, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=False, x_col_1_num=False)
+Manchester_Data_xy_1 = create_xy_dataframe(Manchester_ohe, model_null=False, model_1=True, x_col_null_name=False, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=True, x_col_1_num=False, x_col_2_name=True)
+Oxford_Data_xy_1 = create_xy_dataframe(Oxford_ohe, model_null=False, model_1=True, x_col_null_name=False, x_col_null_num=False, y_col_num=False, y_col_name=True, x_col_1_name=True, x_col_1_num=False, x_col_2_name=True)
 
 #creating test and train dataset from the new xy dataframe for null model
 Manchester_train_df_null, Manchester_test_df_null = train_test_split(Manchester_Data_xy_null)
 Oxford_train_df_null, Oxford_test_df_null = train_test_split(Oxford_Data_xy_null)
+
+#creating test and train dataset from the new xy dataframe for Model 1
+Manchester_train_df_1, Manchester_test_df_1 = train_test_split(Manchester_Data_xy_1)
+Oxford_train_df_null, Oxford_test_df_null = train_test_split(Oxford_Data_xy_1)
 
 # generating data description for model

@@ -13,11 +13,12 @@ def y_config(y_col_num, y_col_name):
         return Y_COL_NAME
 
 
-def x_config(x_col_null_num, x_col_null_name, x_col_1_num, x_col_1_name):
+def x_config(x_col_null_num, x_col_null_name, x_col_1_num, x_col_1_name, x_col_2_name):
     '''Configuration settings for x cols'''
     X_COL_NULL_NUM = 1
     X_COL_NULL_NAME = 'Occupancy_Rate'
-    X_COL_1_NAME = 'Bedrooms','Occupancy_Rate','Number_of_Reservations'
+    X_COL_1_NAME_1 = 'Bedrooms'
+    X_COL_1_NAME_2 = 'Number_of_Reservations'
     X_COL_1_NUM = 1, 
     if x_col_null_num==True:
         return X_COL_NULL_NUM
@@ -26,7 +27,9 @@ def x_config(x_col_null_num, x_col_null_name, x_col_1_num, x_col_1_name):
     if x_col_1_num==True:
         return X_COL_1_NUM
     if x_col_1_name==True:
-        return X_COL_1_NAME
+        return X_COL_1_NAME_1
+    if x_col_2_name==True:
+        return X_COL_1_NAME_2
 
 def crs_config():
     '''Configuration settings for coordinate reference system'''

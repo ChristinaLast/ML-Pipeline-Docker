@@ -53,8 +53,16 @@ def data_description(train_df, model_config, model_null, model_1):
     if config.model_config(model_null=True):
         
         # creating the data frame with the x variables in null model 
-        Manchester_train_df_null = train_test_split(train_df[config.y_config(y_col_num=False, y_col_name=True),config.x_config(x_col_null_num=False, x_col_null_name=True)])
-        Oxford_train_df_null = train_test_split(train_df[config.y_config(y_col_num=False, y_col_name=True),config.x_config(x_col_null_num=False, x_col_null_name=True)])
+        Manchester_train_df_null = train_test_split(
+            train_df[config.y_config(
+                y_col_num=False, y_col_name=True),
+            config.x_config(
+                x_col_null_num=False, x_col_null_name=True)])
+        Oxford_train_df_null = train_test_split(
+            train_df[config.y_config(
+                y_col_num=False, y_col_name=True),
+            config.x_config(
+                x_col_null_num=False, x_col_null_name=True)])
 
         #describing the x and y variables of the null model 
         Manchester_train_df_x_stats_null = x_data_description(Manchester_train_df_null)
@@ -66,14 +74,29 @@ def data_description(train_df, model_config, model_null, model_1):
         return Manchester_train_df_null, Oxford_train_df_null, Manchester_train_df_x_stats_null, Oxford_train_df_x_stats_null, Manchester_train_df_y_stats_null, Oxford_train_df_y_stats_null
     if config.model_config(model_1=True):
         # creating the data frame with the x variables in model 1
-        Manchester_train_df_1 = train_test_split(train_df[config.y_config(y_col_name=True, y_col_num=False),config.x_config(x_col_1_name=True, x_col_1_num=False)])
-        Oxford_train_df_1 = train_test_split(train_df[config.y_config(y_col_name=True, y_col_num=False),config.x_config(x_col_1_name=True, x_col_1_num=False)])
+        Manchester_train_df_1 = train_test_split(
+            train_df[
+                config.y_config(
+                    y_col_name=True, y_col_num=False),
+                config.x_config(
+                    x_col_1_name=True, x_col_1_num=False)])
+        Oxford_train_df_1 = train_test_split(
+            train_df[
+                config.y_config(
+                    y_col_name=True, y_col_num=False),
+                config.x_config(
+                    x_col_1_name=True, x_col_1_num=False)])
 
         # describing the x and y variables of model 1
         Manchester_train_df_x_stats_1 = x_data_description(Manchester_train_df_1)
-        Oxford_train_df_x_stats_1 = x_data_description(Oxford_train_df_null)
+        print("Manchester Model 1 training data description (predictors): ",Manchester_train_df_x_stats_1)
+        Oxford_train_df_x_stats_1 = x_data_description(Oxford_train_df_1)
+        print("Oxford Model 1 training data description (predictors): ",Manchester_train_df_x_stats_1)
 
-        Manchester_train_df_y_stats_1 = y_data_description(Manchester_train_df_null)
-        Oxford_train_df_y_stats_1 = y_data_description(Oxford_train_df_null)
+        Manchester_train_df_y_stats_1 = y_data_description(Manchester_train_df_1)
+        print("Manchester Model 1 training data description (outcome variable): ",Manchester_train_df_y_stats_1)
+        Oxford_train_df_y_stats_1 = y_data_description(Oxford_train_df_1)
+        print("Oxford Model 1 training data description (outcome variable): ",Manchester_train_df_y_stats_1)
 
-        return Manchester_train_df_x_stats_1, Oxford_train_df_x_stats_1, Manchester_train_df_y_stats_1, Oxford_train_df_y_stats_1
+
+        return Manchester_train_df_1, Oxford_train_df_1, Manchester_train_df_x_stats_1, Oxford_train_df_x_stats_1, Manchester_train_df_y_stats_1, Oxford_train_df_y_stats_1
