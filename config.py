@@ -42,3 +42,8 @@ def model_config(model_null, model_1):
         return model_null
     if model_1==True:
         return model_1
+
+#def dataset_config(train_df, model_null, model_1):
+#    ''' configuration settings for each dataset'''
+#    if train_df==Manchester_train_df_null or train_df==Manchester_train_df_1:
+        

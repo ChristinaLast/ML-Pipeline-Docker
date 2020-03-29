@@ -1,5 +1,5 @@
 from dataCleaning import load_data, clean_data, removing_outliers, normalize, log, aggregate_df, convert_yearly_income_2018_2019, one_hot_encoder, create_y, create_boxplot, classify_y, create_gdf, create_classification_col, create_xy_dataframe
-from dataModelling import train_test_split, x_data_description, y_data_description
+from dataModelling import train_test_split, x_data_description, y_data_description, data_description, norm, build_model
 import mapclassify as mc 
 import config
 
@@ -77,6 +77,23 @@ Oxford_train_df_null, Oxford_test_df_null = train_test_split(Oxford_Data_xy_null
 
 #creating test and train dataset from the new xy dataframe for Model 1
 Manchester_train_df_1, Manchester_test_df_1 = train_test_split(Manchester_Data_xy_1)
-Oxford_train_df_null, Oxford_test_df_null = train_test_split(Oxford_Data_xy_1)
+Oxford_train_df_1, Oxford_test_df_null = train_test_split(Oxford_Data_xy_1)
 
-# generating data description for model
+# generating data description for Null model
+Manchester_x_null, Manchester_y_null, Manchester_df_x_stats_null, Manchester_df_y_stats_null = data_description(Manchester_train_df_null, model_null=True, model_1=False)
+Oxford_x_null, Oxford_y_null, Oxford_df_x_stats_null, Oxford_df_y_stats_null = data_description(Oxford_train_df_null, model_null=True, model_1=False)
+
+# generating data description for Model 1
+Manchester_x_1, Manchester_y_1, Manchester_df_x_stats_1, Manchester_df_y_stats_1 = data_description(Manchester_train_df_1, model_null=False, model_1=True)
+Oxford_x_1, Oxford_y_1, Oxford_df_x_stats_1, Oxford_df_y_stats_1 = data_description(Oxford_train_df_1, model_null=False, model_1=True)
+
+# Running ANN for Null models for Manchester and Oxford
+Manchester_model_null = build_model(Manchester_train_df_null, Manchester_df_x_stats_null, model_null=True, model_1=False)
+Oxford_model_null = build_model(Oxford_train_df_null, Oxford_df_x_stats_null, model_null=True, model_1=False)
+
+Manchester_model_null = build_model(Manchester_train_df_1, Manchester_df_x_stats_1, model_null=True, model_1=False)
+Oxford_model_null = build_model(Oxford_train_df_1, Oxford_df_x_stats_1, model_null=True, model_1=False)
+
+# Running ANN for Model 1 for Manchester and Oxford
+#Manchester_model_1 = build_model(Manchester_train_df_1)
+#Oxford_model_1 = build_model(Oxford_train_df_1)
